@@ -3,11 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// Đặt tên repo của bạn ở đây
-const repoName = "lovable-web";
-
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: `/${repoName}/`, // <--- thêm dòng này
   server: {
     host: "::",
     port: 8080,
