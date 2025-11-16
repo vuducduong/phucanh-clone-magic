@@ -15,22 +15,10 @@ export const Header = () => {
                 <span>Hệ thống showroom</span>
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Mua hàng online
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
                 Khuyến mãi
               </a>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
                 Trung tâm dịch vụ
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Đăng ký
-              </a>
-              <span className="text-border">|</span>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Đăng nhập
               </a>
             </div>
           </div>
@@ -45,10 +33,10 @@ export const Header = () => {
             <a href="/" className="flex-shrink-0">
               <div className="flex items-center gap-2">
                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-xl">PA</span>
+                  <span className="text-primary-foreground font-bold text-xl">DEL</span>
                 </div>
                 <div>
-                  <div className="font-bold text-xl text-primary">PHÚC ANH</div>
+                  <div className="font-bold text-xl text-primary">DEL</div>
                   <div className="text-xs text-muted-foreground">Hệ thống siêu thị</div>
                 </div>
               </div>
@@ -79,18 +67,6 @@ export const Header = () => {
                   <div className="text-xs">HOTLINE</div>
                   <div className="font-semibold">1900 2164</div>
                 </div>
-              </Button>
-
-              <Button className="gap-2 bg-secondary hover:bg-secondary/90">
-                <User className="h-4 w-4" />
-                <span className="font-medium">BUILD PC</span>
-              </Button>
-
-              <Button variant="outline" className="relative border-2">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
-                  0
-                </span>
               </Button>
             </div>
           </div>

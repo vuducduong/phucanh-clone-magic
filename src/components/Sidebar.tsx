@@ -1,52 +1,106 @@
 import { ChevronRight, Laptop, Smartphone, Monitor, Server, Gamepad2, HardDrive, Tv, Camera, Printer, Headphones, Wifi, Package } from "lucide-react";
 
 const categories = [
-  { icon: Laptop, name: "Laptop - Máy tính xách tay", badge: "2%" },
-  { icon: Smartphone, name: "Điện thoại, Tablet & Phụ kiện" },
-  { icon: Package, name: "Sản phẩm Apple" },
-  { icon: Gamepad2, name: "PC Gaming, Đồ họa, Học tập" },
-  { icon: HardDrive, name: "Linh kiện máy tính" },
-  { icon: Monitor, name: "Màn hình máy tính, giá treo" },
-  { icon: Gamepad2, name: "Gaming Gear, Bàn phím, Chuột" },
-  { icon: Laptop, name: "Máy tính đồng bộ" },
-  { icon: Server, name: "Server & Workstation" },
-  { icon: Laptop, name: "Phụ kiện Laptop, PC & nghề nhĩa" },
-  { icon: Printer, name: "Thiết bị văn phòng, Phần mềm" },
-  { icon: Tv, name: "Thiết bị trình chiếu, Phụ kiện" },
-  { icon: Camera, name: "Thiết bị lưu trữ & Ký thuật số" },
-  { icon: Wifi, name: "Thiết bị mạng" },
-  { icon: Camera, name: "Camera & SmartHome" },
-  { icon: Headphones, name: "Thiết bị siêu thị, mã vạch" },
-  { icon: Package, name: "Hàng trưng bày giảm giá" },
+  { 
+    icon: Smartphone, 
+    name: "Street light - đèn đường",
+    children: [
+      "STVN08-160LY",
+      "STVN05-160LY",
+    ]
+  },
+  { 
+    icon: Monitor, 
+    name: "Flood light - đèn chiếu pha",
+    children: [
+      "FLVNXXX-140-170LM",
+    ]
+  },
+  { 
+    icon: Server, 
+    name: "Tube light - đèn tuýp",
+    children: [
+      "T8060-165WS-65K",
+      "T8VN11-185PV",
+      "T8VN14-180PV",
+      "T8VN18-195PV",
+      "T8VN20-180PV",
+    ]
+  },
+  { 
+    icon: Gamepad2, 
+    name: "Pannel light - đèn gắn trần",
+    children: [
+      "PLVN40-110WN",
+      "PLVN30-150WN",
+    ]
+  },
+  { 
+    icon: HardDrive, 
+    name: "Hightbay - đèn nhà xưởng ",
+    children: [
+      "HBPA150-140BT-57K",
+      "HBPA080-185BT-57K",
+      "HBPA100-185BT-57K",
+      "HBPA150-185BT-57K",
+      "HBPA200-185BT-57K",
+      "HBPA240-185BT-57K",
+    ]
+  },
 ];
+
 
 export const Sidebar = () => {
   return (
     <aside className="w-64 bg-card border-r border-border h-full">
       <div className="p-4">
-        <h3 className="font-bold text-lg mb-4 text-foreground">DANH MUC</h3>
+        <h3 className="font-bold text-lg mb-4 text-foreground">DANH MỤC</h3>
         <nav className="space-y-1">
           {categories.map((category, index) => {
             const Icon = category.icon;
+
             return (
-              <a
-                key={index}
-                href="#"
-                className="flex items-center justify-between px-3 py-2.5 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors group"
-              >
-                <div className="flex items-center gap-3">
-                  <Icon className="h-4 w-4 text-muted-foreground group-hover:text-sidebar-accent-foreground" />
-                  <span className="text-sm text-foreground">{category.name}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  {category.badge && (
-                    <span className="text-xs font-medium bg-primary text-primary-foreground px-2 py-0.5 rounded">
-                      {category.badge}
-                    </span>
-                  )}
-                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                </div>
-              </a>
+              <div key={index} className="relative group">
+                {/* ITEM */}
+                <a
+                  href="#"
+                  className="flex items-center justify-between px-3 py-2.5 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    {Icon && (
+                      <Icon className="h-4 w-4 text-muted-foreground group-hover:text-sidebar-accent-foreground" />
+                    )}
+                    <span className="text-sm text-foreground">{category.name}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {category.badge && (
+                      <span className="text-xs font-medium bg-primary text-primary-foreground px-2 py-0.5 rounded">
+                        {category.badge}
+                      </span>
+                    )}
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                </a>
+
+                {/* SUBMENU */}
+                {category.children && (
+                  <div className="absolute left-full top-0 ml-1 w-48 bg-card border border-border rounded-md shadow-lg hidden group-hover:block z-50">
+                    <ul className="py-2">
+                      {category.children.map((item, i) => (
+                        <li key={i}>
+                          <a
+                            href="#"
+                            className="block px-3 py-2 hover:bg-accent hover:text-accent-foreground text-sm"
+                          >
+                            {item}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             );
           })}
         </nav>
