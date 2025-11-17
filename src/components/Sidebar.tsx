@@ -88,21 +88,23 @@ export const Sidebar = () => {
                   </div>
                 </a>
 
-                {/* SUBMENU */}
+                {/* SUBMENU với vùng hover mở rộng */}
                 {category.children && (
-                  <div className="absolute left-full top-0 ml-1 w-48 bg-card border border-border rounded-md shadow-lg hidden group-hover:block z-50">
-                    <ul className="py-2">
-                      {category.children.map((item, i) => (
-                        <li key={i}>
-                          <a
-                            href="#"
-                            className="block px-3 py-2 hover:bg-accent hover:text-accent-foreground text-sm"
-                          >
-                            {item}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="absolute left-full top-0 -ml-2 pl-2 w-52 hidden group-hover:block z-50">
+                    <div className="bg-card border border-border rounded-md shadow-lg">
+                      <ul className="py-2">
+                        {category.children.map((item, i) => (
+                          <li key={i}>
+                            <a
+                              href="#"
+                              className="block px-4 py-2.5 hover:bg-accent hover:text-accent-foreground text-sm text-foreground transition-colors"
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
               </div>
