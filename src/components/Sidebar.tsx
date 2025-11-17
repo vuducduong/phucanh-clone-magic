@@ -1,25 +1,20 @@
-import { ChevronRight, Laptop, Smartphone, Monitor, Server, Gamepad2, HardDrive, Tv, Camera, Printer, Headphones, Wifi, Package } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const categories = [
   { 
-    icon: Smartphone, 
     name: "Street light - đèn đường",
     children: [
       "STVN08-160LY",
       "STVN05-160LY",
     ],
-    badge: undefined
   },
   { 
-    icon: Monitor, 
     name: "Flood light - đèn chiếu pha",
     children: [
       "FLVNXXX-140-170LM",
     ],
-    badge: undefined
   },
   { 
-    icon: Server, 
     name: "Tube light - đèn tuýp",
     children: [
       "T8060-165WS-65K",
@@ -28,19 +23,15 @@ const categories = [
       "T8VN18-195PV",
       "T8VN20-180PV",
     ],
-    badge: undefined
   },
   { 
-    icon: Gamepad2, 
     name: "Pannel light - đèn gắn trần",
     children: [
       "PLVN40-110WN",
       "PLVN30-150WN",
     ],
-    badge: undefined
   },
   { 
-    icon: HardDrive, 
     name: "Hightbay - đèn nhà xưởng ",
     children: [
       "HBPA150-140BT-57K",
@@ -50,7 +41,6 @@ const categories = [
       "HBPA200-185BT-57K",
       "HBPA240-185BT-57K",
     ],
-    badge: undefined
   },
 ];
 
@@ -62,8 +52,6 @@ export const Sidebar = () => {
         <h3 className="font-bold text-lg mb-4 text-foreground">DANH MỤC</h3>
         <nav className="space-y-1">
           {categories.map((category, index) => {
-            const Icon = category.icon;
-
             return (
               <div key={index} className="relative group">
                 {/* ITEM */}
@@ -71,21 +59,9 @@ export const Sidebar = () => {
                   href="#"
                   className="flex items-center justify-between px-3 py-2.5 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    {Icon && (
-                      <Icon className="h-4 w-4 text-muted-foreground group-hover:text-sidebar-accent-foreground" />
-                    )}
-                    <span className="text-sm text-foreground">{category.name}</span>
-                  </div>
+                  <span className="text-sm text-foreground">{category.name}</span>
 
-                  <div className="flex items-center gap-2">
-                    {category.badge && (
-                      <span className="text-xs font-medium bg-primary text-primary-foreground px-2 py-0.5 rounded">
-                        {category.badge}
-                      </span>
-                    )}
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                  </div>
+                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
                 </a>
 
                 {/* SUBMENU với vùng hover mở rộng */}
