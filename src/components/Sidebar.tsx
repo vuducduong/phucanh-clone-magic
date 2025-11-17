@@ -1,18 +1,14 @@
+import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
 const categories = [
   { 
     name: "Street light - đèn đường",
-    children: [
-      "STVN08-160LY",
-      "STVN05-160LY",
-    ],
+    children: ["STVN08-160LY", "STVN05-160LY"],
   },
   { 
     name: "Flood light - đèn chiếu pha",
-    children: [
-      "FLVNXXX-140-170LM",
-    ],
+    children: ["FLVNXXX-140-170LM"],
   },
   { 
     name: "Tube light - đèn tuýp",
@@ -26,13 +22,10 @@ const categories = [
   },
   { 
     name: "Pannel light - đèn gắn trần",
-    children: [
-      "PLVN40-110WN",
-      "PLVN30-150WN",
-    ],
+    children: ["PLVN40-110WN", "PLVN30-150WN"],
   },
   { 
-    name: "Hightbay - đèn nhà xưởng ",
+    name: "Hightbay - đèn nhà xưởng",
     children: [
       "HBPA150-140BT-57K",
       "HBPA080-185BT-57K",
@@ -44,48 +37,45 @@ const categories = [
   },
 ];
 
-
 export const Sidebar = () => {
   return (
     <aside className="w-64 bg-card border-r border-border h-full">
       <div className="p-4">
         <h3 className="font-bold text-lg mb-4 text-foreground">DANH MỤC</h3>
         <nav className="space-y-1">
-          {categories.map((category, index) => {
-            return (
-              <div key={index} className="relative group">
-                {/* ITEM */}
-                <a
-                  href="#"
-                  className="flex items-center justify-between px-3 py-2.5 rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
-                >
-                  <span className="text-sm text-foreground">{category.name}</span>
-
-                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                </a>
-
-                {/* SUBMENU với vùng hover mở rộng */}
-                {category.children && (
-                  <div className="absolute left-full top-0 -ml-2 pl-2 w-52 hidden group-hover:block z-50">
-                    <div className="bg-card border border-border rounded-md shadow-lg">
-                      <ul className="py-2">
-                        {category.children.map((item, i) => (
-                          <li key={i}>
-                            <a
-                              href="#"
-                              className="block px-4 py-2.5 hover:bg-accent hover:text-accent-foreground text-sm text-foreground transition-colors"
-                            >
-                              {item}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
+          {categories.map((category, index) => (
+            <div key={index} className="relative group">
+              {/* ITEM */}
+              <div
+                className="flex items-center justify-between px-3 py-2.5 rounded-md 
+                hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors cursor-pointer"
+              >
+                <span className="text-sm text-foreground">{category.name}</span>
+                <ChevronRight className="h-4 w-4 text-muted-foreground" />
               </div>
-            );
-          })}
+
+              {/* SUBMENU */}
+              {category.children && (
+                <div className="absolute left-full top-0 -ml-2 pl-2 w-52 hidden group-hover:block z-50">
+                  <div className="bg-card border border-border rounded-md shadow-lg">
+                    <ul className="py-2">
+                      {category.children.map((item, i) => (
+                        <li key={i}>
+                          <Link
+                            href={`/product/${item}`}
+                            className="block px-4 py-2.5 hover:bg-accent hover:text-accent-foreground 
+                            text-sm text-foreground transition-colors"
+                          >
+                            {item}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
         </nav>
       </div>
 
