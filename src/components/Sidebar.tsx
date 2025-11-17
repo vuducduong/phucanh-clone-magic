@@ -7,14 +7,16 @@ const categories = [
     children: [
       "STVN08-160LY",
       "STVN05-160LY",
-    ]
+    ],
+    badge: undefined
   },
   { 
     icon: Monitor, 
     name: "Flood light - đèn chiếu pha",
     children: [
       "FLVNXXX-140-170LM",
-    ]
+    ],
+    badge: undefined
   },
   { 
     icon: Server, 
@@ -25,7 +27,8 @@ const categories = [
       "T8VN14-180PV",
       "T8VN18-195PV",
       "T8VN20-180PV",
-    ]
+    ],
+    badge: undefined
   },
   { 
     icon: Gamepad2, 
@@ -33,7 +36,8 @@ const categories = [
     children: [
       "PLVN40-110WN",
       "PLVN30-150WN",
-    ]
+    ],
+    badge: undefined
   },
   { 
     icon: HardDrive, 
@@ -45,7 +49,8 @@ const categories = [
       "HBPA150-185BT-57K",
       "HBPA200-185BT-57K",
       "HBPA240-185BT-57K",
-    ]
+    ],
+    badge: undefined
   },
 ];
 
