@@ -30,7 +30,7 @@ export const products = [
         dimensions: "703*200*H109 mm",
       },
     ],
-    images: ["https://example.com/street1.jpg"],
+    images: ["/images/streetLight/StreetLight1.jpg", "/images/streetLight/StreetLight2.jpg", "/images/streetLight/StreetLight3.jpg"],
   },
   {
     type: "floodLight",
@@ -56,7 +56,7 @@ export const products = [
         weight: "XXkgs",
       },
     ],
-    images: ["https://example.com/flood1.jpg"],
+    images: ["/images/foodLight/FloodLight1.jpg", "/images/foodLight/FloodLight2.jpg", "/images/foodLight/FloodLight3.jpg", "/images/foodLight/FloodLight4.jpg", "/images/foodLight/FloodLight5.jpg", "/images/foodLight/FloodLight6.jpg"],
   },
   {
     type: "tubeLight",
@@ -110,7 +110,7 @@ export const products = [
         dimensions: "1200mm",
       },
     ],
-    images: ["https://example.com/tube1.jpg"],
+    images: ["/images/tubeLight/TubeLight1.jpg", "/images/tubeLight/TubeLight2.jpg"],
   },
   {
     type: "panelLight",
@@ -141,7 +141,7 @@ export const products = [
         dimensions: "595*595*31mm",
       },
     ],
-    images: ["https://example.com/panel1.jpg"],
+    images: ["/images/pannelLight/PannelLight1.jpg", "/images/pannelLight/PannelLight2.jpg", "/images/pannelLight/PannelLight3.jpg", "/images/pannelLight/PannelLight4.jpg"],
   },
   {
     typeId: "highBay",
@@ -201,6 +201,6 @@ export const products = [
         dimensions: "Φ325*137mm",
       },
     ],
-    images: ["https://example.com/highbay1.jpg"],
+    images: ["/images/highBay/highBay1.jpg", "/images/highBay/highBay2.jpg", "/images/highBay/highBay3.jpg", "/images/highBay/highBay4.jpg"],
   },
 ];
