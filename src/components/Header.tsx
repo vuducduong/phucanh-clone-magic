@@ -73,12 +73,11 @@ export const Header = () => {
       <nav className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-8 py-3">
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Laptop - Máy tính xách tay</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Điện thoại, Tablet & Phụ kiện</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">PC Gaming, Đồ họa, Học tập</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Linh kiện máy tính</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Màn hình máy tính</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Thiết bị văn phòng</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Giải pháp chiếu sáng</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Sản phẩm</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Nhà thông minh RalliSmart</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Tri thức nền</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Công cụ - Tài liệu</a>
           </div>
         </div>
       </nav>

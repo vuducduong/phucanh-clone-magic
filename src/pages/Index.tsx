@@ -18,7 +18,6 @@ const Index = () => {
             
             {/* Additional product sections can be added here */}
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-foreground mb-4">Laptop Bán Chạy</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {/* Product cards would go here */}
               </div>
