@@ -107,4 +107,5 @@ const products = [
     ],
     images: ["https://example.com/highbay1.jpg"],
   },
+  
 ];
