@@ -31,15 +31,11 @@ export const Header = () => {
           <div className="flex items-center justify-between py-4 gap-6">
             {/* Logo */}
             <a href="/" className="flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-xl">DEL</span>
-                </div>
-                <div>
-                  <div className="font-bold text-xl text-primary">DEL</div>
-                  <div className="text-xs text-muted-foreground">Hệ thống siêu thị</div>
-                </div>
-              </div>
+              <img 
+                src="/images/logo.png" 
+                alt="DEL - Hệ thống siêu thị" 
+                className="h-16 w-auto object-contain"
+              />
             </a>
 
             {/* Search Bar */}
