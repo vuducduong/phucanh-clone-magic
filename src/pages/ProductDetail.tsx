@@ -212,56 +212,27 @@ const ProductDetail = () => {
               </CardContent>
             </Card>
 
-            {/* Quick Specs */}
-            <Card className="mt-4">
-              <CardContent className="p-4 space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="font-semibold">Lượt xem:</span>
-                  <span>{product.views}</span>
-                  <span className="text-primary cursor-pointer">👁 So sánh</span>
-                </div>
-                <Separator />
-                {specifications.slice(0, 3).map((spec, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-success">✓</span>
-                    <div>
-                      <span className="font-medium">{spec.label}:</span> {spec.value}
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
           </div>
 
           {/* Middle Column - Product Info */}
           <div className="lg:col-span-5">
             <div className="space-y-4">
-              <div>
-                <h1 className="text-2xl font-bold text-foreground leading-tight">
-                  {product.name}
-                </h1>
-                <p className="text-sm text-muted-foreground mt-1">{product.sku}</p>
-              </div>
-
-              {/* Price */}
-              <Card className="bg-accent/5 border-accent/20">
+              {/* Specifications */}
+              <Card>
                 <CardContent className="p-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-muted-foreground">Giá Khuyến mãi:</span>
-                    </div>
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-4xl font-bold text-accent">
-                        {product.salePrice.toLocaleString("vi-VN")} ₫
-                      </span>
-                      <span className="text-lg text-muted-foreground line-through">
-                        {product.originalPrice.toLocaleString("vi-VN")} ₫
-                      </span>
-                      <Badge variant="destructive" className="bg-accent text-base px-2">
-                        -{product.discount}%
-                      </Badge>
-                    </div>
-                    <p className="text-xs text-muted-foreground">(Giá đã có VAT)</p>
+                  <h2 className="text-lg font-bold mb-4">Thông số kỹ thuật</h2>
+                  <div className="grid gap-3">
+                    {specifications.map((spec, idx) => (
+                      <div
+                        key={idx}
+                        className={`grid grid-cols-3 gap-4 py-2 ${
+                          idx !== specifications.length - 1 ? "border-b" : ""
+                        }`}
+                      >
+                        <span className="font-medium text-sm">{spec.label}</span>
+                        <span className="col-span-2 text-sm text-muted-foreground">{spec.value}</span>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
