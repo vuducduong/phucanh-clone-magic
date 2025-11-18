@@ -1,3 +1,4 @@
+import { products } from "@/data/products";
 import { useParams } from "react-router-dom";
 
 import { useState } from "react";
@@ -9,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 
 const ProductDetail = () => {
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState(0);
 
@@ -422,39 +424,7 @@ const ProductDetail = () => {
                   </div>
                 </CardContent>
               </Card>
-            </TabsContent>
-            <TabsContent value="description" className="mt-4">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="prose max-w-none">
-                    <p className="text-muted-foreground">
-                      Laptop Acer Aspire AL14-71M-52GQ là dòng laptop hiệu năng cao với thiết kế mỏng nhẹ, phù hợp cho công việc và giải trí. 
-                      Sản phẩm được trang bị bộ vi xử lý Intel Core i5 thế hệ 12, RAM 16GB và ổ cứng SSD 512GB mang lại trải nghiệm mượt mà.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="reviews" className="mt-4">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="text-center py-8">
-                    <p className="text-muted-foreground">Chưa có đánh giá nào cho sản phẩm này</p>
-                    <Button variant="outline" className="mt-4">Viết đánh giá đầu tiên</Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="qa" className="mt-4">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="text-center py-8">
-                    <p className="text-muted-foreground">Chưa có câu hỏi nào</p>
-                    <Button variant="outline" className="mt-4">Đặt câu hỏi</Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
+            </TabsContent>    
           </Tabs>
         </div>
       </main>
