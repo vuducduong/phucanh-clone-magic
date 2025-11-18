@@ -57,7 +57,7 @@ export const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="font-bold text-foreground mb-4">Về Phúc Anh</h4>
+              <h4 className="font-bold text-foreground mb-4">Về DEL</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Giới thiệu</a></li>
                 <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Tuyển dụng</a></li>
@@ -100,7 +100,7 @@ export const Footer = () => {
           </div>
 
           <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 Phúc Anh - Hệ thống siêu thị Điện thoại, Máy tính, Linh kiện, Thiết bị văn phòng</p>
+            <p>© 2025 Delightings Vietnam CO.,LTD</p>
           </div>
         </div>
       </div>

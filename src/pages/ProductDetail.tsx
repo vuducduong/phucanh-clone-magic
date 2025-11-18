@@ -1,6 +1,5 @@
 import { products } from "@/data/products";
 import { useParams } from "react-router-dom";
-
 import { useState } from "react";
 import {
   ShoppingCart,
@@ -15,67 +14,21 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 
 const ProductDetail = () => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedVariant, setSelectedVariant] = useState(0);
-
   const { code } = useParams<{ code: string }>();
-  // Tìm sản phẩm theo code
-  let productA = null;
-  for (const p of products) {
-    if (p.variants.some((v) => v.code === code)) {
-      productA = p;
-      break;
-    }
-  }
-  if (!productA) return <div>Sản phẩm không tồn tại</div>;
 
-  const product = {
-    name: "Laptop Acer Aspire High Performance Lite AL14-71M-52GQ",
-    sku: "(i5 12500H/ 16GB/ 512GB SSD/ 14 inch FHD+/ Win11/ Silver/ Vỏ nhôm/ 2Y)",
-    originalPrice: 16800000,
-    salePrice: 14490000,
-    discount: 14,
-    rating: 4.8,
-    views: 4837,
-    inStock: true,
-    warranty:
-      "24 Tháng. Tại hãng (Pin 12 tháng). Bảo hành 3S1. Đổi mới 30 ngày",
-    images: [
-      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
-      "https://images.unsplash.com/photo-1616763355603-9755a640a287?w=800",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800",
-    ],
-  };
+  // Tìm product chứa variant có code
+  const product = products.find((p) => p.variants.some((v) => v.code === code));
+  if (!product) return <div>Sản phẩm không tồn tại</div>;
 
-  const variants = [
-    {
-      name: "Acer Aspire High Performance Lite AL14-71M-52GQ",
-      specs: "i5 12500H/ 16GB/ 512GB SSD",
-      price: 14490000,
-      selected: true,
-    },
-    {
-      name: "Acer Aspire High Performance A515-58M-95HT",
-      specs: "i9 13900H/ 16GB/ 512GB SSD",
-      price: 19990000,
-    },
-    {
-      name: "Acer Aspire High Performance Go 15 G3-51P-58XT",
-      specs: "i5 1335U/ 16GB/ 512GB SSD",
-      price: 14390000,
-    },
-    {
-      name: "Acer Aspire High Performance A515-58M-79R7",
-      specs: "i7 NX KQ8SV.007 i7 13620H/ 16GB/ 512GB SSD",
-      price: 15790000,
-    },
-  ];
+  // Xác định variant đang chọn
+  const variantIndex = product.variants.findIndex((v) => v.code === code);
+  const [selectedVariant, setSelectedVariant] = useState(
+    variantIndex !== -1 ? variantIndex : 0
+  );
+  const [selectedImage, setSelectedImage] = useState(0);
 
   return (
     <>
@@ -83,23 +36,9 @@ const ProductDetail = () => {
       <div className="border-b bg-muted/30">
         <div className="container py-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <a href="/" className="hover:text-primary">
-              Trang chủ
-            </a>
+            <a href="/" className="hover:text-primary">Trang chủ</a>
             <ChevronRight className="h-4 w-4" />
-            <a href="#" className="hover:text-primary">
-              Laptop - Máy tính xách tay
-            </a>
-            <ChevronRight className="h-4 w-4" />
-            <a href="#" className="hover:text-primary">
-              Laptop theo hãng
-            </a>
-            <ChevronRight className="h-4 w-4" />
-            <a href="#" className="hover:text-primary">
-              Acer
-            </a>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-foreground">Aspire</span>
+            <span className="text-foreground">{product.typeName}</span>
           </div>
         </div>
       </div>
@@ -107,14 +46,14 @@ const ProductDetail = () => {
       {/* Main Content */}
       <main className="container py-6">
         <div className="grid gap-6 lg:grid-cols-12">
-          {/* Left Column - Images & Specs */}
+          {/* Left Column - Images */}
           <div className="lg:col-span-5">
             <Card className="overflow-hidden">
               <CardContent className="p-4">
                 <div className="aspect-[4/3] overflow-hidden rounded-lg bg-muted relative">
                   <img
                     src={product.images[selectedImage]}
-                    alt={product.name}
+                    alt={product.typeName}
                     className="h-full w-full object-cover"
                   />
                   <Button
@@ -131,16 +70,10 @@ const ProductDetail = () => {
                       key={idx}
                       onClick={() => setSelectedImage(idx)}
                       className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
-                        selectedImage === idx
-                          ? "border-primary"
-                          : "border-border"
+                        selectedImage === idx ? "border-primary" : "border-border"
                       }`}
                     >
-                      <img
-                        src={img}
-                        alt={`${idx + 1}`}
-                        className="h-full w-full object-cover"
-                      />
+                      <img src={img} alt={`${idx + 1}`} className="h-full w-full object-cover" />
                     </button>
                   ))}
                 </div>
@@ -149,147 +82,59 @@ const ProductDetail = () => {
           </div>
 
           {/* Middle Column - Product Info */}
-          <div className="lg:col-span-5">
-            <div className="space-y-4">
-              {/* Specifications */}
-              <Card>
-                <CardContent className="p-4">
-                  <h2 className="text-lg font-bold mb-4">Thông số kỹ thuật</h2>
-                  <div className="grid gap-3">
-                    {productA.specs.map((spec, idx) => (
-                      <div
-                        key={idx}
-                        className={`grid grid-cols-3 gap-4 py-2 ${
-                          idx !== productA.length - 1 ? "border-b" : ""
-                        }`}
-                      >
-                        <span className="font-medium text-sm">
-                          {spec.label}
-                        </span>
-                        <span className="col-span-2 text-sm text-muted-foreground">
-                          {spec.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Student Discount */}
-              <div className="bg-primary/5 border border-primary/20 rounded-lg p-3">
-                <p className="text-sm">
-                  <span className="text-primary font-semibold">
-                    Học sinh, sinh viên, giáo viên giảm 100.000 ₫
-                  </span>
-                  <a href="#" className="text-primary underline ml-1">
-                    (Xem ngay)
-                  </a>
-                </p>
-                <p className="text-sm mt-1">
-                  <span className="font-semibold">Thanh toán ngay</span> – Ưu
-                  đãi lên tới{" "}
-                  <span className="text-accent font-semibold">1 triệu</span>
-                  <a href="#" className="text-primary underline ml-1">
-                    (Xem ngay)
-                  </a>
-                </p>
-              </div>
-
-              {/* Warranty */}
-              <div className="flex items-start gap-2 text-sm">
-                <span className="font-semibold">Bảo hành:</span>
-                <span>{product.warranty}</span>
-              </div>
-              <p className="text-sm text-accent">
-                Giao hàng tận nơi miễn phí{" "}
-                <a href="#" className="underline">
-                  (Xem chi tiết)
-                </a>
-              </p>
-
-              {/* Variants */}
-              <div className="space-y-2">
-                <p className="font-semibold text-sm">Sản phẩm cùng loại:</p>
-                <div className="space-y-2">
-                  {variants.map((variant, idx) => (
-                    <button
+          <div className="lg:col-span-5 space-y-4">
+            {/* Specifications */}
+            <Card>
+              <CardContent className="p-4">
+                <h2 className="text-lg font-bold mb-4">Thông số kỹ thuật</h2>
+                <div className="grid gap-3">
+                  {product.specs.map((spec, idx) => (
+                    <div
                       key={idx}
-                      onClick={() => setSelectedVariant(idx)}
-                      className={`w-full rounded-lg border-2 p-3 text-left transition-all ${
-                        selectedVariant === idx
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
+                      className={`grid grid-cols-3 gap-4 py-2 ${idx !== product.specs.length - 1 ? "border-b" : ""}`}
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="flex-1">
-                          <div
-                            className={`text-xs ${
-                              selectedVariant === idx
-                                ? "text-primary"
-                                : "text-muted-foreground"
-                            }`}
-                          >
-                            {selectedVariant === idx ? "⦿" : "○"} {variant.name}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {variant.specs}
-                          </div>
-                        </div>
-                        <span className="text-sm font-bold text-accent whitespace-nowrap">
-                          {variant.price.toLocaleString("vi-VN")} ₫
-                        </span>
-                      </div>
-                    </button>
+                      <span className="font-medium text-sm">{spec.label}</span>
+                      <span className="col-span-2 text-sm text-muted-foreground">{spec.value}</span>
+                    </div>
                   ))}
                 </div>
-              </div>
+              </CardContent>
+            </Card>
 
-              {/* CTA */}
-              <div className="space-y-3">
-                <Button
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-base font-semibold"
-                >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  TƯ VẤN NGAY
-                </Button>
+            {/* Variants */}
+            <div className="space-y-2">
+              <p className="font-semibold text-sm">Sản phẩm cùng loại:</p>
+              <div className="space-y-2">
+                {product.variants.map((variant, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedVariant(idx)}
+                    className={`w-full rounded-lg border-2 p-3 text-left transition-all ${
+                      selectedVariant === idx ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex-1">
+                        <div className={`text-xs ${selectedVariant === idx ? "text-primary" : "text-muted-foreground"}`}>
+                          {selectedVariant === idx ? "⦿" : "○"} {variant.code}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          {variant.power} / {variant.luminousFlux} / {variant.luminousEfficiency || variant.efficacy}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
               </div>
-
-              {/* Gifts */}
-              <Card className="bg-accent/5 border-accent/30">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Package className="h-5 w-5 text-accent" />
-                    <span className="font-semibold text-accent">
-                      ƯU ĐÃI VÀ QUÀ TẶNG KHUYẾN MÃI:
-                    </span>
-                  </div>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent">♦</span>
-                      <span>
-                        Giảm tới <strong>500.000đ</strong> cho Học sinh, Sinh
-                        viên, Giáo viên{" "}
-                        <a href="#" className="text-primary underline">
-                          (Xem ngay)
-                        </a>
-                      </span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
             </div>
           </div>
 
-          {/* Right Column - Contact & Features */}
+          {/* Right Column - Placeholder / Features */}
           <div className="lg:col-span-2">
             <Card className="sticky top-24">
               <CardContent className="p-4 space-y-4">
                 <div className="text-center space-y-2">
-                  <p className="font-semibold text-accent">
-                    Đang cần hàng tại:
-                  </p>
+                  <p className="font-semibold text-accent">Đang cần hàng tại:</p>
                   <p className="text-sm">(Bấm xem đường)</p>
                   <Button variant="outline" size="sm" className="w-full">
                     Liên hệ 1900 2164
@@ -303,42 +148,6 @@ const ProductDetail = () => {
                       <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
                       <span className="text-xs">100% sản phẩm chính hãng</span>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        100% giá cạnh tranh so với thị trường
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        Mua hàng trả góp lãi suất 0% với hơi thủ
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        Giao hàng nhanh 2h và miễn phí giao hàng từ 500.000đ
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        Ưu đãi và dành cho khách hàng doanh nghiệp
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        Đổi mới sản phẩm đến 30 ngày
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 flex-shrink-0 fill-warning text-warning" />
-                      <span className="text-xs">
-                        Dịch vụ bảo hành tận tâm, chuyên nghiệp
-                      </span>
-                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -346,7 +155,6 @@ const ProductDetail = () => {
           </div>
         </div>
       </main>
-
     </>
   );
 };

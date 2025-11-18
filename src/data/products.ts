@@ -113,7 +113,7 @@ export const products = [
     images: ["/images/tubeLight/TubeLight1.jpg", "/images/tubeLight/TubeLight2.jpg"],
   },
   {
-    type: "panelLight",
+    type: "pannelLight",
     typeName: "Pannel light - Đèn gắn trần",
     specs: [
       { label: "Điện áp hoạt động", value: "AC220-240V" },
@@ -144,8 +144,8 @@ export const products = [
     images: ["/images/pannelLight/PannelLight1.jpg", "/images/pannelLight/PannelLight2.jpg", "/images/pannelLight/PannelLight3.jpg", "/images/pannelLight/PannelLight4.jpg"],
   },
   {
-    typeId: "highBay",
-    typeName: "Highbay - Đèn nhà xưởng",
+    typeId: "hightBay",
+    typeName: "Hightbay - Đèn nhà xưởng",
     specs: [
       { label: "Điện áp hoạt động", value: "120-277V" },
       { label: "Nguồn sử dụng", value: "Sosen" },
@@ -201,6 +201,6 @@ export const products = [
         dimensions: "Φ325*137mm",
       },
     ],
-    images: ["/images/highBay/highBay1.jpg", "/images/highBay/highBay2.jpg", "/images/highBay/highBay3.jpg", "/images/highBay/highBay4.jpg"],
+    images: ["/images/hightBay/HightBay1.jpg", "/images/hightBay/HightBay2.jpg", "/images/hightBay/HightBay3.jpg", "/images/hightBay/HightBay4.jpg"],
   },
 ];
