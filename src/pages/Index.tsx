@@ -1,15 +1,11 @@
-import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { Hero } from "@/components/Hero";
 import { DealsSection } from "@/components/DealsSection";
 import { FeaturesBar } from "@/components/FeaturesBar";
-import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
+    <>
       <FeaturesBar />
       
       <div className="container mx-auto px-4">
@@ -30,9 +26,7 @@ const Index = () => {
           </main>
         </div>
       </div>
-      
-      <Footer />
-    </div>
+    </>
   );
 };
 

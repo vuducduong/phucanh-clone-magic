@@ -78,7 +78,7 @@ const ProductDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       {/* Top Bar */}
       <div className="bg-primary text-primary-foreground">
         <div className="container">
@@ -543,7 +543,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
