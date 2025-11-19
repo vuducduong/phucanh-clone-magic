@@ -72,50 +72,64 @@ const ProductDetail = () => {
             </Card>
           </div>
 
-          <div className="right-panel">
-            <h3>Thông số theo mã</h3>
-            <ul>
-              <li>
-                <strong>Mã sản phẩm:</strong> {variant.code}
-              </li>
-              <li>
-                <strong>Công suất:</strong> {variant.power}
-              </li>
-              <li>
-                <strong>Quang thông:</strong> {variant.luminousFlux}
-              </li>
-              <li>
-                <strong>Hiệu suất:</strong> {variant.luminousEfficiency}
-              </li>
-              <li>
-                <strong>Kích thước:</strong> {variant.dimensions}
-              </li>
-            </ul>
-          </div>
-          {/* Middle Column - Product Info */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Specifications */}
+          {/* Right Column - Variant Info */}
+          <div className="lg:col-span-7">
             <Card>
-              <CardContent className="p-4">
-                <h2 className="text-lg font-bold mb-4">Thông số kỹ thuật</h2>
-                <div className="grid gap-3">
-                  {product.specs.map((spec, idx) => (
-                    <div
-                      key={idx}
-                      className={`grid grid-cols-3 gap-4 py-2 ${
-                        idx !== product.specs.length - 1 ? "border-b" : ""
-                      }`}
-                    >
-                      <span className="font-medium text-sm">{spec.label}</span>
-                      <span className="col-span-2 text-sm text-muted-foreground">
-                        {spec.value}
-                      </span>
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold mb-6">{product.typeName}</h2>
+                <div className="grid gap-4">
+                  <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
+                    <div>
+                      <span className="text-sm text-muted-foreground">Mã sản phẩm</span>
+                      <p className="text-lg font-semibold mt-1">{variant?.code}</p>
                     </div>
-                  ))}
+                    <div>
+                      <span className="text-sm text-muted-foreground">Công suất</span>
+                      <p className="text-lg font-semibold mt-1">{variant?.power}</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
+                    <div>
+                      <span className="text-sm text-muted-foreground">Quang thông</span>
+                      <p className="text-lg font-semibold mt-1">{variant?.luminousFlux}</p>
+                    </div>
+                    <div>
+                      <span className="text-sm text-muted-foreground">Hiệu suất</span>
+                      <p className="text-lg font-semibold mt-1">{variant?.luminousEfficiency}</p>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-muted/50 rounded-lg">
+                    <span className="text-sm text-muted-foreground">Kích thước</span>
+                    <p className="text-lg font-semibold mt-1">{variant?.dimensions}</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Specifications Section - Full Width Below */}
+        <div className="mt-6">
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-xl font-bold mb-6">Thông số kỹ thuật</h2>
+              <div className="grid gap-3">
+                {product.specs.map((spec, idx) => (
+                  <div
+                    key={idx}
+                    className={`grid grid-cols-3 gap-4 py-3 ${
+                      idx !== product.specs.length - 1 ? "border-b" : ""
+                    }`}
+                  >
+                    <span className="font-medium">{spec.label}</span>
+                    <span className="col-span-2 text-muted-foreground">
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </>
