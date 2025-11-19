@@ -30,7 +30,7 @@ export const products = [
         dimensions: "703*200*H109 mm",
       },
     ],
-    images: ["/images/streetLight/StreetLight1.jpg", "/images/streetLight/StreetLight2.jpg", "/images/streetLight/StreetLight3.jpg"],
+    images: ["/images/streetLight/Street_light1.jpg", "/images/streetLight/Street_light2.jpg", "/images/streetLight/Street_light3.jpg"],
   },
   {
     type: "floodLight",
@@ -56,7 +56,7 @@ export const products = [
         weight: "XXkgs",
       },
     ],
-    images: ["/images/foodLight/FloodLight1.jpg", "/images/foodLight/FloodLight2.jpg", "/images/foodLight/FloodLight3.jpg", "/images/foodLight/FloodLight4.jpg", "/images/foodLight/FloodLight5.jpg", "/images/foodLight/FloodLight6.jpg"],
+    images: ["/images/foodLight/Flood_light1.jpg", "/images/foodLight/Flood_light2.jpg", "/images/foodLight/Flood_light3.jpg", "/images/foodLight/Flood_light4.jpg", "/images/foodLight/Flood_light5.jpg", "/images/foodLight/Flood_light6.jpg"],
   },
   {
     type: "tubeLight",
@@ -110,7 +110,7 @@ export const products = [
         dimensions: "1200mm",
       },
     ],
-    images: ["/images/tubeLight/TubeLight1.jpg", "/images/tubeLight/TubeLight2.jpg"],
+    images: ["/images/tubeLight/Tube_light1.jpg", "/images/tubeLight/Tube_light2.jpg"],
   },
   {
     type: "pannelLight",
@@ -141,7 +141,7 @@ export const products = [
         dimensions: "595*595*31mm",
       },
     ],
-    images: ["/images/pannelLight/PannelLight1.jpg", "/images/pannelLight/PannelLight2.jpg", "/images/pannelLight/PannelLight3.jpg", "/images/pannelLight/PannelLight4.jpg"],
+    images: ["/images/pannelLight/Pannel_light1.jpg", "/images/pannelLight/Pannel_light2.jpg", "/images/pannelLight/Pannel_light3.jpg", "/images/pannelLight/Pannel_light4.jpg"],
   },
   {
     typeId: "hightBay",
@@ -201,6 +201,6 @@ export const products = [
         dimensions: "Φ325*137mm",
       },
     ],
-    images: ["/images/hightBay/HightBay1.jpg", "/images/hightBay/HightBay2.jpg", "/images/hightBay/HightBay3.jpg", "/images/hightBay/HightBay4.jpg"],
+    images: ["/images/hightBay/Hight_bay1.jpg", "/images/hightBay/Hight_bay2.jpg", "/images/hightBay/Hight_bay3.jpg", "/images/hightBay/Hight_bay4.jpg"],
   },
 ];
