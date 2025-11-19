@@ -12,7 +12,7 @@ const Index = () => {
         <div className="flex gap-6">
           <Sidebar />
           
-          <main className="flex-1">
+          <main className="flex-1 bg-white rounded-lg p-6">
             <Hero />
             <DealsSection />
             
