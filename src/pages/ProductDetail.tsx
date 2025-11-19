@@ -1,12 +1,7 @@
 import { products } from "@/data/products";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import {
-  Heart,
-  Star,
-
-  ChevronRight,
-} from "lucide-react";
+import { Heart, Star, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,19 +15,18 @@ const ProductDetail = () => {
   if (!product) return <div>Sản phẩm không tồn tại</div>;
 
   // Xác định variant đang chọn
-  const variantIndex = product.variants.findIndex((v) => v.code === code);
-  const [selectedVariant, setSelectedVariant] = useState(
-    variantIndex !== -1 ? variantIndex : 0
-  );
-  const [selectedImage, setSelectedImage] = useState(0);
+  const variant = product.variants.find((v) => v.code === code);
 
+  const [selectedImage, setSelectedImage] = useState(0);
   return (
     <>
       {/* Breadcrumb */}
       <div className="border-b bg-muted/30">
         <div className="container py-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <a href="/" className="hover:text-primary">Trang chủ</a>
+            <a href="/" className="hover:text-primary">
+              Trang chủ
+            </a>
             <ChevronRight className="h-4 w-4" />
             <span className="text-foreground">{product.typeName}</span>
             <ChevronRight className="h-4 w-4" />
@@ -61,10 +55,16 @@ const ProductDetail = () => {
                       key={idx}
                       onClick={() => setSelectedImage(idx)}
                       className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
-                        selectedImage === idx ? "border-primary" : "border-border"
+                        selectedImage === idx
+                          ? "border-primary"
+                          : "border-border"
                       }`}
                     >
-                      <img src={img} alt={`${idx + 1}`} className="h-full w-full object-cover" />
+                      <img
+                        src={img}
+                        alt={`${idx + 1}`}
+                        className="h-full w-full object-cover"
+                      />
                     </button>
                   ))}
                 </div>
@@ -72,6 +72,26 @@ const ProductDetail = () => {
             </Card>
           </div>
 
+          <div className="right-panel">
+            <h3>Thông số theo mã</h3>
+            <ul>
+              <li>
+                <strong>Mã sản phẩm:</strong> {variant.code}
+              </li>
+              <li>
+                <strong>Công suất:</strong> {variant.power}
+              </li>
+              <li>
+                <strong>Quang thông:</strong> {variant.luminousFlux}
+              </li>
+              <li>
+                <strong>Hiệu suất:</strong> {variant.luminousEfficiency}
+              </li>
+              <li>
+                <strong>Kích thước:</strong> {variant.dimensions}
+              </li>
+            </ul>
+          </div>
           {/* Middle Column - Product Info */}
           <div className="lg:col-span-5 space-y-4">
             {/* Specifications */}
@@ -82,16 +102,20 @@ const ProductDetail = () => {
                   {product.specs.map((spec, idx) => (
                     <div
                       key={idx}
-                      className={`grid grid-cols-3 gap-4 py-2 ${idx !== product.specs.length - 1 ? "border-b" : ""}`}
+                      className={`grid grid-cols-3 gap-4 py-2 ${
+                        idx !== product.specs.length - 1 ? "border-b" : ""
+                      }`}
                     >
                       <span className="font-medium text-sm">{spec.label}</span>
-                      <span className="col-span-2 text-sm text-muted-foreground">{spec.value}</span>
+                      <span className="col-span-2 text-sm text-muted-foreground">
+                        {spec.value}
+                      </span>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </div>          
+          </div>
         </div>
       </main>
     </>
