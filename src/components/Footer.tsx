@@ -2,22 +2,8 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const stores = [
   {
-    id: 1,
-    name: "SHOWROOM PHÚC ANH 15 XÃ ĐÀN",
-    address: "15 Xã Đàn, phường Kim Liên, Hà Nội",
-    phone: "(024) 3968 9966 (ext 1)",
-    email: "phucanh.xadan@phucanh.com.vn",
-  },
-  {
-    id: 2,
-    name: "SHOWROOM PHÚC ANH 152 TRẦN DUY HƯNG",
-    address: "152-154 Trần Duy Hưng, phường Yên Hoà, Hà Nội",
-    phone: "(024) 3968 9966 (ext 2)",
-    email: "phucanh.tranduyhung@phucanh.com.vn",
-  },
-  {
     id: 3,
-    name: "SHOWROOM PHÚC ANH 134 THÁI HÀ",
+    name: "SHOWROOM Delightings",
     address: "134 Thái Hà, phường Đống Đa, Hà Nội",
     phone: "(024) 3968 9966 (ext 3)",
     email: "phucanh.thaiha@phucanh.com.vn",

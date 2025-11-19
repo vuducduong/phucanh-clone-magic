@@ -11,30 +11,7 @@ export const Hero = () => {
             <span className="text-5xl md:text-6xl">BỨT TỐC MỤC TIÊU</span>
           </h1>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-            <div className="bg-card/95 backdrop-blur-sm rounded-lg p-6 shadow-card hover:shadow-hover transition-shadow">
-              <div className="text-primary font-bold text-sm mb-2">Laptop Chính Hãng</div>
-              <div className="text-foreground">
-                <span className="text-3xl font-bold">35%</span>
-                <span className="text-lg ml-2">Giảm giá</span>
-              </div>
-            </div>
-            
-            <div className="bg-card/95 backdrop-blur-sm rounded-lg p-6 shadow-card hover:shadow-hover transition-shadow">
-              <div className="text-secondary font-bold text-sm mb-2">Thiết Bị Văn Phòng</div>
-              <div className="text-foreground">
-                <span className="text-3xl font-bold">50%</span>
-                <span className="text-lg ml-2">Giảm giá</span>
-              </div>
-            </div>
-            
-            <div className="bg-card/95 backdrop-blur-sm rounded-lg p-6 shadow-card hover:shadow-hover transition-shadow">
-              <div className="text-primary font-bold text-sm mb-2">Ưu Đãi Thanh Toán</div>
-              <div className="text-foreground">
-                <span className="text-3xl font-bold">1,000K</span>
-              </div>
-            </div>
-          </div>
+          
 
           <div className="mt-8">
             <Button size="lg" className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold px-8">
