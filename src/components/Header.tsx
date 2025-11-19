@@ -73,11 +73,11 @@ export const Header = () => {
       <nav className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-8 py-3">
+            <a href="/" className="font-medium hover:opacity-80 transition-opacity">Trang chủ</a>
+            <a href="/about" className="font-medium hover:opacity-80 transition-opacity">Về chúng tôi</a>
             <a href="#" className="font-medium hover:opacity-80 transition-opacity">Giải pháp chiếu sáng</a>
             <a href="#" className="font-medium hover:opacity-80 transition-opacity">Sản phẩm</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Nhà thông minh RalliSmart</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Tri thức nền</a>
-            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Công cụ - Tài liệu</a>
+            <a href="#" className="font-medium hover:opacity-80 transition-opacity">Liên hệ</a>
           </div>
         </div>
       </nav>
