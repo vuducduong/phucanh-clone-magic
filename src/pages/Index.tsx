@@ -12,9 +12,9 @@ const Index = () => {
         <div className="flex gap-6">
           <Sidebar />
           
-          <main className="flex-1 bg-white rounded-lg p-6">
+          <main className="flex-1">
             <Hero />
-            <DealsSection />
+            {/* DealsSection removed - keeping content clean */}
             
             {/* Additional product sections can be added here */}
             <section className="mb-8">
