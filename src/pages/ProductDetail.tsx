@@ -1,11 +1,16 @@
 import { products } from "@/data/products";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Heart, Star, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { ChevronRight } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const ProductDetail = () => {
   const { code } = useParams<{ code: string }>();
@@ -18,6 +23,7 @@ const ProductDetail = () => {
   const variant = product.variants.find((v) => v.code === code);
 
   const [selectedImage, setSelectedImage] = useState(0);
+
   return (
     <>
       {/* Breadcrumb */}
@@ -29,105 +35,183 @@ const ProductDetail = () => {
             </a>
             <ChevronRight className="h-4 w-4" />
             <span className="text-foreground">{product.typeName}</span>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-foreground">{code}</span>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <main className="container py-6">
-        <div className="grid gap-6 lg:grid-cols-12">
+      <main className="container py-8">
+        {/* Title */}
+        <h1 className="text-3xl font-bold text-center mb-8 uppercase text-muted-foreground">
+          {product.typeName}
+        </h1>
+
+        <div className="grid gap-6 lg:grid-cols-2 mb-6">
           {/* Left Column - Images */}
-          <div className="lg:col-span-5">
-            <Card className="overflow-hidden">
-              <CardContent className="p-4">
-                <div className="aspect-[4/3] overflow-hidden rounded-lg bg-muted relative">
-                  <img
-                    src={product.images[selectedImage]}
-                    alt={product.typeName}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="mt-3 grid grid-cols-5 gap-2">
-                  {product.images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setSelectedImage(idx)}
-                      className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
-                        selectedImage === idx
-                          ? "border-primary"
-                          : "border-border"
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt={`${idx + 1}`}
-                        className="h-full w-full object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right Column - Variant Info */}
-          <div className="lg:col-span-7">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-6">{product.typeName}</h2>
-                <div className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
-                    <div>
-                      <span className="text-sm text-muted-foreground">Mã sản phẩm</span>
-                      <p className="text-lg font-semibold mt-1">{variant?.code}</p>
-                    </div>
-                    <div>
-                      <span className="text-sm text-muted-foreground">Công suất</span>
-                      <p className="text-lg font-semibold mt-1">{variant?.power}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
-                    <div>
-                      <span className="text-sm text-muted-foreground">Quang thông</span>
-                      <p className="text-lg font-semibold mt-1">{variant?.luminousFlux}</p>
-                    </div>
-                    <div>
-                      <span className="text-sm text-muted-foreground">Hiệu suất</span>
-                      <p className="text-lg font-semibold mt-1">{variant?.luminousEfficiency}</p>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-muted/50 rounded-lg">
-                    <span className="text-sm text-muted-foreground">Kích thước</span>
-                    <p className="text-lg font-semibold mt-1">{variant?.dimensions}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Specifications Section - Full Width Below */}
-        <div className="mt-6">
           <Card>
             <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-6">Thông số kỹ thuật</h2>
-              <div className="grid gap-3">
-                {product.specs.map((spec, idx) => (
-                  <div
+              <div className="aspect-[4/3] overflow-hidden rounded-lg bg-muted relative mb-4">
+                <img
+                  src={product.images[selectedImage]}
+                  alt={product.typeName}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="grid grid-cols-5 gap-2">
+                {product.images.map((img, idx) => (
+                  <button
                     key={idx}
-                    className={`grid grid-cols-3 gap-4 py-3 ${
-                      idx !== product.specs.length - 1 ? "border-b" : ""
+                    onClick={() => setSelectedImage(idx)}
+                    className={`aspect-square overflow-hidden rounded-md border-2 transition-all ${
+                      selectedImage === idx ? "border-primary" : "border-border"
                     }`}
                   >
-                    <span className="font-medium">{spec.label}</span>
-                    <span className="col-span-2 text-muted-foreground">
-                      {spec.value}
-                    </span>
-                  </div>
+                    <img
+                      src={img}
+                      alt={`${idx + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+                  </button>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Right Column - Thông số chung */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">Thông số chung</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableBody>
+                  {product.specs.map((spec, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell className="font-medium w-1/2">
+                        {spec.label}
+                      </TableCell>
+                      <TableCell>{spec.value}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Dòng sản phẩm */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="text-xl">Dòng sản phẩm</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="font-bold">Mã sản phẩm</TableHead>
+                    <TableHead className="font-bold">Công suất</TableHead>
+                    <TableHead className="font-bold">lm</TableHead>
+                    <TableHead className="font-bold">lm/W</TableHead>
+                    <TableHead className="font-bold">Kích thước (L*W*H)</TableHead>
+                    <TableHead className="font-bold">Khối lượng</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {product.variants.map((v, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell className="font-medium">{v.code}</TableCell>
+                      <TableCell>{v.power}</TableCell>
+                      <TableCell>{v.luminousFlux}</TableCell>
+                      <TableCell>{v.luminousEfficiency}</TableCell>
+                      <TableCell>{v.dimensions}</TableCell>
+                      <TableCell>{(v as any).weight || "-"}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Kích thước sản phẩm & Đồ thị quang thông */}
+        <div className="grid gap-6 lg:grid-cols-2 mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">Kích thước sản phẩm</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center">
+                <p className="text-muted-foreground text-sm">
+                  Hình ảnh kích thước sản phẩm
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">Đồ thị quang thông</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center">
+                <p className="text-muted-foreground text-sm">
+                  Biểu đồ phân bố ánh sáng
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Điều kiện vận hành và Thông tin an toàn */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">
+                Điều kiện vận hành và bảo quản
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <p className="text-sm">
+                <span className="font-medium">Nhiệt độ vận hành:</span> -20 đến
+                +45°C, độ ẩm 20-90%
+              </p>
+              <p className="text-sm">
+                <span className="font-medium">Nhiệt độ bảo quản:</span> -20 đến
+                +60°C, độ ẩm 5-95%
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl">Các thông tin an toàn</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  • Không sử dụng dưới mái hiên, nơi ẩm ướt, nơi có hơi nước
+                  trực tiếp hoặc nơi có nguy cơ nước bắn vào gây điện giật.
+                </li>
+                <li>
+                  • Chỉ sử dụng dải nhiệt độ -20°C đến +45°C.
+                </li>
+                <li>
+                  • Không dùng ở nơi có rung chấn mạnh hoặc gió mạnh để tránh
+                  thiết bị rơi.
+                </li>
+                <li>
+                  • Không nhìn trực tiếp vào nguồn sáng (LED) để tránh hại mắt.
+                </li>
+                <li>
+                  • Tránh va chạm thiết bị trong quá trình lắp đặt và sử dụng
+                  để tránh hỏng hóc.
+                </li>
+                <li>
+                  • Giữ thiết bị cách tường ít nhất 1 m và cách thiết bị khác
+                  ít nhất 0.5 m.
+                </li>
+              </ul>
             </CardContent>
           </Card>
         </div>
