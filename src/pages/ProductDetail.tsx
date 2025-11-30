@@ -1,7 +1,7 @@
 import { products } from "@/data/products";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Phone, Mail } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -77,30 +77,57 @@ const ProductDetail = () => {
             </CardContent>
           </Card>
 
-          {/* Right Column - Thông số chung */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-xl">Thông số chung</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                <p className="text-sm text-muted-foreground mb-1">Giá</p>
-                <p className="text-2xl font-bold text-primary">Liên hệ</p>
-              </div>
-              <Table>
-                <TableBody>
-                  {product.specs.map((spec, idx) => (
-                    <TableRow key={idx}>
-                      <TableCell className="font-medium w-1/2">
-                        {spec.label}
-                      </TableCell>
-                      <TableCell>{spec.value}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+          {/* Right Column - Giá và Thông số chung */}
+          <div className="space-y-6">
+            {/* Card Giá */}
+            <Card className="border-primary/30 shadow-lg">
+              <CardContent className="p-6">
+                <div className="text-center space-y-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-2">Giá sản phẩm</p>
+                    <p className="text-4xl font-bold text-primary mb-4">Liên hệ</p>
+                  </div>
+                  <div className="flex flex-col gap-2 pt-4 border-t">
+                    <a 
+                      href="tel:+84123456789" 
+                      className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>+84 123 456 789</span>
+                    </a>
+                    <a 
+                      href="mailto:info@delightings.vn" 
+                      className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Mail className="h-4 w-4" />
+                      <span>info@delightings.vn</span>
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card Thông số chung */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Thông số chung</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableBody>
+                    {product.specs.map((spec, idx) => (
+                      <TableRow key={idx}>
+                        <TableCell className="font-medium w-1/2">
+                          {spec.label}
+                        </TableCell>
+                        <TableCell>{spec.value}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Dòng sản phẩm */}
