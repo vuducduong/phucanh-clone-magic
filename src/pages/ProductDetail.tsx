@@ -83,6 +83,10 @@ const ProductDetail = () => {
               <CardTitle className="text-xl">Thông số chung</CardTitle>
             </CardHeader>
             <CardContent>
+              <div className="mb-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-sm text-muted-foreground mb-1">Giá</p>
+                <p className="text-2xl font-bold text-primary">Liên hệ</p>
+              </div>
               <Table>
                 <TableBody>
                   {product.specs.map((spec, idx) => (
